@@ -1,0 +1,221 @@
+nelmio_api_doc:
+  documentation:
+    info:
+      title: "API du Portfolio"
+      description: "API pour gérer les avis et le formulaire de contact"
+      version: "1.0.0"
+    paths:
+      /api/reviews:
+        get:
+          summary: "Récupère la liste des avis"
+          tags:
+            - "Reviews"
+          responses:
+            "200":
+              description: "Liste des avis"
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Review"
+            "500":
+              description: "Erreur interne du serveur"
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      error:
+                        type: string
+                        example: "Erreur interne du serveur"
+        post:
+          summary: "Ajoute un nouvel avis"
+          tags:
+            - "Reviews"
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  required:
+                    - author
+                    - content
+                    - score
+                  properties:
+                    author:
+                      type: string
+                      example: "John Doe"
+                    content:
+                      type: string
+                      example: "Super site !"
+                    score:
+                      type: integer
+                      example: 5
+          responses:
+            "201":
+              description: "Avis ajouté"
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: "Avis ajouté"
+            "400":
+              description: "Bad Request - Champs manquants ou score incorrect"
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      error:
+                        type: string
+                        example: "Missing fields"
+            "422":
+              description: "Unprocessable Entity - score incorrect"
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      error:
+                        type: string
+                        example: "Le score doit être un entier entre 1 et 5"
+            "500":
+              description: "Erreur interne du serveur"
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      error:
+                        type: string
+                        example: "Erreur interne du serveur"
+      /api/contact:
+        post:
+          summary: "Envoie un email via le formulaire de contact"
+          tags:
+            - "Contact"
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  required:
+                    - name
+                    - email
+                    - message
+                  properties:
+                    name:
+                      type: string
+                      example: "Alice Dupont"
+                    email:
+                      type: string
+                      format: email
+                      example: "alice@example.com"
+                    message:
+                      type: string
+                      example: "Bonjour, je suis intéressé par votre travail."
+          responses:
+            "200":
+              description: "Email envoyé avec succès"
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: "Email envoyé avec succès"
+            "400":
+              description: "Bad Request - Missing fields"
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      error:
+                        type: string
+                        example: "Missing fields"
+            "500":
+              description: "Erreur interne du serveur"
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      error:
+                        type: string
+                        example: "Erreur interne du serveur"
+      /api/visitor:
+        get:
+          summary: "Récupère le nombre de visiteur"
+          tags:
+            - "Visitors"
+          responses:
+            "200":
+              description: "Nombre de visiteurs"
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Visitor"
+            "500":
+              description: "Erreur interne du serveur"
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      error:
+                        type: string
+                        example: "Erreur interne du serveur"
+      /api/visitor/increment:                   
+        post:
+            summary: "Incrémente le nombre de visiteurs"
+            tags:
+              - "Visitors"
+            responses:
+                "200":
+                    description: "Nombre de visiteurs mis à jour"
+                    content:
+                        application/json:
+                          schema:
+                            $ref: "#/components/schemas/Visitor"
+                "500":
+                    description: "Erreur interne du serveur"
+                    content:
+                        application/json:
+                          schema:
+                            type: object
+                            properties:
+                              error:
+                                type: string
+                                example: "Erreur interne du serveur"
+    components:
+      schemas:
+        Review:
+          type: object
+          properties:
+            author:
+              type: string
+              example: "John Doe"
+            content:
+              type: string
+              example: "Super site !"
+            score:
+              type: integer
+              example: 5
+        Visitor:
+          type: object
+          properties:
+            count:
+              type: integer
+              example: 150
+  areas:
+    default:
+      path_patterns:
+        - ^/api(?!/docs) # Inclut uniquement les routes commençant par /api, exclut /api/docs

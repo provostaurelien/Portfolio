@@ -1,0 +1,35 @@
+# Fichier permettant la définition des routes symfony
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+api_doc:
+    path: /api/doc
+    controller: nelmio_api_doc.controller.swagger_ui
+
+review_get:
+    path: /api/reviews
+    controller: App\Controller\ReviewController::getReviews
+    methods: [GET]
+
+review_post:
+    path: /api/reviews
+    controller: App\Controller\ReviewController::addReview
+    methods: [POST]
+
+contact_send_email:
+    path: /api/contact
+    controller: App\Controller\ContactController::sendEmail
+    methods: [POST]
+
+visitor_get:
+    path: /api/visitor
+    controller: App\Controller\VisitorController::getVisitorCount
+    methods: [GET]
+
+visitor_increment:
+    path: /api/visitor/increment
+    controller: App\Controller\VisitorController::incrementVisitorCount
+    methods: [POST]
