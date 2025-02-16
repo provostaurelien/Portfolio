@@ -21,6 +21,7 @@ export default {
     const projects = [
       { id: '1', name: 'Projet A', description: 'Description du projet A' },
       { id: '2', name: 'Projet B', description: 'Description du projet B' },
+      { id: '3', name: 'Projet C', description: 'Description du projet C' },
     ]
 
     // Recherche du projet correspondant à l'ID

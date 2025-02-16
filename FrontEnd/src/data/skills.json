@@ -1,0 +1,47 @@
+[
+  {
+    "image": "html-css.jpg",
+    "title": "HTML - CSS",
+    "text": "Intégration d’interfaces responsives et accessibles, utilisation de maquettes Figma, développement d’animations CSS"
+  },
+  {
+    "image": "js.png",
+    "title": "javascript",
+    "text": "Manipulation du DOM, création d’éléments dynamiques, gestion de données de formulaires"
+  },
+  {
+    "image": "react.png",
+    "title": "React",
+    "text": "Création d’applications React, création de composants et manipulation de leur état"
+  },
+  {
+    "image": "vuejs.png",
+    "title": "Vue.js",
+    "text": "Création d’applications Vue.js, création de composants"
+  },
+  {
+    "image": "jira.png",
+    "title": "Gestion de projet Jira",
+    "text": "Analyse des besoins d’un client, définition d’une solution technique répondant aux besoins fonctionnelle, planification du projet, spécifications des éxigences et bugs"
+  },
+  {
+    "image": "Azure.png",
+    "title": "Gestion de projet Azure Devops",
+    "text": "Analyse des besoins d’un client,  spécifications des éxigences et bugs"
+  },
+  {
+    "image": "test.png",
+    "title": "Test",
+    "text": "Tests exploratoires, unitaires et d’intégration, définition d’une stratégie de test et d’un rédaction d’un cahier de recette"
+  },
+  {
+    "image": "cypress.png",
+    "title": "Automatisation de tests cypress",
+    "text": "Automatisation de tests E2E et d’API"
+  },
+  {
+    "image": "selenium.png",
+    "title": "Automatisation de tests Selenium",
+    "text": "Automatisation de tests E2E multi-navigateurs"
+  }
+]

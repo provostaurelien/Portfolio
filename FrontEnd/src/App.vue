@@ -3,7 +3,7 @@
     <!-- Conteneur principal (sidebar + contenu) -->
     <div class="content-wrapper">
       <!-- Sidebar -->
-      <TheHeader />
+      <TheHeader class="header" />
       <!-- Contenu principal -->
       <main class="main-content">
         <router-view />
@@ -17,7 +17,7 @@
 
 <script>
 import TheHeader from './components/TheHeader.vue' // Import du header
-import TheFooter from './components/Thefooter.vue' // Import du footer
+import TheFooter from './components/TheFooter.vue' // Import du footer
 
 export default {
   components: { TheHeader, TheFooter }, // Enregistrement des composants
@@ -42,29 +42,47 @@ export default {
 .content-wrapper > *:first-child {
   width: 15%; /* Sidebar occupe une largeur fixe en desktop */
   flex-shrink: 0; /* Empêche la sidebar de rétrécir */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
-
-/* Contenu principal */
+/* Compensation de sidebar fixed */
 .main-content {
-  flex-grow: 1; /* Le contenu principal occupe tout l'espace restant */
-  padding: 20px;
+  padding-left: 15%;
 }
 
 /* Footer */
 .footer {
   text-align: center;
-  padding: 10px;
+  /* Compensation de sidebar fixed */
+  padding-left: 18%;
 }
 
 /* Responsivité pour mobile */
 @media (max-width: 768px) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  /* Compensation du décalage par rapport à la position fixed */
+  .main-content {
+    padding-top: 100px;
+    padding-left: 0;
+  }
   .content-wrapper {
     flex-direction: column; /* Passe à une structure verticale en mobile */
     height: auto; /* Ajuste automatiquement la hauteur selon le contenu */
   }
 
   .content-wrapper > *:first-child {
-    width: 95%; /* La sidebar occupe toute la largeur en mobile */
+    width: 100%; /* La sidebar occupe toute la largeur en mobile */
+  }
+  .footer {
+    padding-left: 10px;
   }
 }
 </style>

@@ -51,10 +51,7 @@ export default {
 </script>
 
 <template>
-  <div>
-    <!-- Affiche le nombre total de visiteurs -->
-    <p>Nombre total de visiteurs : {{ visitorCount }}</p>
-  </div>
+  {{ visitorCount }}
 </template>
 
 <style></style>

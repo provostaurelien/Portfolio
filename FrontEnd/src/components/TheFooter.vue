@@ -42,7 +42,7 @@ export default {
   position: relative;
   background-color: inherit; /* Respecte les couleurs du mode clair/sombre */
   color: inherit;
-  clip-path: path('M0,300 C150,400 3650,0 500,00 L500,00 L0,0 Z'); /* Forme de vague */
+  /*clip-path: path('M0,300 C150,400 3650,0 500,00 L500,00 L0,0 Z'); /* Forme de vague */
 }
 
 .light {

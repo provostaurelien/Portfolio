@@ -1,4 +1,4 @@
-const BASE_URL = '/api' // Base URL pour vos routes API
+const BASE_URL = 'http://127.0.0.1:8000/api' // Base URL pour vos routes API
 
 // API pour ContactForm.vue
 
