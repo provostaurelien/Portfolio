@@ -1,5 +1,5 @@
 <template>
-  <footer :class="isDarkMode ? 'dark' : 'light'" class="footer">
+  <footer :class="{ dark: isDark }" class="footer">
     <span>Designed by me @ 2025</span>
     <span class="footer-email">contact@monmail.com</span>
   </footer>
@@ -8,27 +8,11 @@
 <script>
 export default {
   name: 'TheFooter',
-  data() {
-    return {
-      isDarkMode: window.matchMedia('(prefers-color-scheme: dark)').matches, // Détection du mode sombre
-    }
-  },
-  methods: {
-    updateDarkMode(e) {
-      this.isDarkMode = e.matches // Met à jour la variable en cas de changement
+  props: {
+    isDark: {
+      type: Boolean,
+      required: true,
     },
-  },
-  mounted() {
-    // Écoute des changements de mode sombre
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', this.updateDarkMode)
-  },
-  beforeUnmount() {
-    // Supprime l'écouteur pour éviter les fuites de mémoire
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .removeEventListener('change', this.updateDarkMode)
   },
 }
 </script>
@@ -38,7 +22,7 @@ export default {
   display: flex; /* Flexbox pour aligner les éléments horizontalement */
   justify-content: space-between; /* Espace entre les deux parties (mention et e-mail) */
   align-items: center; /* Centre verticalement les éléments */
-  padding: 10px 20px;
+  padding: 10px 20px 10px 17%;
   position: relative;
   background-color: inherit; /* Respecte les couleurs du mode clair/sombre */
   color: inherit;
@@ -46,16 +30,22 @@ export default {
 }
 
 .light {
-  background-color: white;
+  background-color: white !important;
   color: black;
 }
-.dark {
-  background-color: #2c2c2c;
+.dark .footer {
+  background-color: #2c2c2c !important;
   color: white;
 }
 
 /* E-mail dans le footer */
 .footer-email {
   text-align: right;
+}
+@media (max-width: 768px) {
+  .footer {
+    padding: 10px 20px;
+    box-sizing: border-box; /* S'assure que les marges sont incluses dans la largeur/hauteur */
+  }
 }
 </style>

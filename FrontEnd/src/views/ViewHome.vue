@@ -1,6 +1,6 @@
 <template>
-  <div :class="['Home', { dark: isDarkMode }]">
-    <section :class="['Title', { dark: isDarkMode }]">
+  <div :class="['Home', { dark: isDark }]">
+    <section :class="['Title', { dark: isDark }]">
       <h1>Mon portfolio</h1>
       <br />
       <!-- appel api get visitor -->
@@ -10,7 +10,7 @@
       </h2>
     </section>
 
-    <section :class="['APropos', { dark: isDarkMode }]">
+    <section :class="['APropos', { dark: isDark }]">
       <div class="APropos-container">
         <!-- Image à gauche -->
         <div class="APropos-image">
@@ -33,14 +33,18 @@
         </div>
       </div>
     </section>
-    <div :class="['Home', { dark: isDarkMode }]">
-      <section :class="['Skills', { dark: isDarkMode }]" id="skills">
+    <div :class="['Home', { dark: isDark }]">
+      <section :class="['Skills', { dark: isDark }]" id="skills">
         <h2>Mes compétences</h2>
         <div class="skills-grid">
           <!-- Rendu dynamique des cartes -->
           <div v-for="(skill, index) in skills" :key="index" class="card">
             <div class="card-body">
-              <img :src="'src/assets/pictures/skills/' + skill.image" alt="" class="card-image" />
+              <img
+                :src="'src/assets/pictures/skills/' + skill.image"
+                alt="{{ skill.title }}"
+                class="card-image"
+              />
               <h3 class="card-title">{{ skill.title }}</h3>
               <p class="card-text">{{ skill.text }}</p>
             </div>
@@ -48,7 +52,7 @@
         </div>
       </section>
     </div>
-    <section :class="['Projects', { dark: isDarkMode }]">
+    <section :class="['Projects', { dark: isDark }]">
       <h2>Mes projets</h2>
       <div class="Caroussel">
         <!-- Utilisation du composant -->
@@ -66,13 +70,18 @@ import skillsData from '@/data/skills.json'
 import CarousselPortfolio from '@/components/CarousselPortfolio.vue'
 
 export default {
+  props: {
+    isDark: {
+      type: Boolean,
+      required: true,
+    },
+  },
   components: {
     VisitorTracker, // Enregistrement du composant
     CarousselPortfolio, //Enregistrement du composant caroussel
   },
   data() {
     return {
-      isDarkMode: false, // Indique si le mode sombre est activé
       birthDate: new Date(1987, 11, 6), // Votre date de naissance (mois indexé à partir de 0)
       AvatarSrc: Avatar,
       skills: [], // Liste réactive des compétences
@@ -94,29 +103,14 @@ export default {
     },
   },
   methods: {
-    updateDarkMode(e) {
-      this.isDarkMode = e.matches // Met à jour le mode sombre en fonction des préférences utilisateur
-    },
     loadSkills() {
       this.skills = skillsData // Charge les données JSON dans la liste réactive
     },
   },
 
   mounted() {
-    // Vérifie si le mode sombre est activé au chargement
-    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    this.isDarkMode = darkModeMediaQuery.matches
-
-    // Écoute les changements de mode sombre
-    darkModeMediaQuery.addEventListener('change', this.updateDarkMode)
     // Charge les compétences depuis le fichier JSON
     this.loadSkills()
-  },
-  beforeUnmount() {
-    // Nettoie l'écouteur d'événements pour éviter les fuites de mémoire
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .removeEventListener('change', this.updateDarkMode)
   },
 }
 </script>
@@ -126,7 +120,7 @@ export default {
 .Title,
 .Skills {
   position: relative;
-  padding: 5rem;
+  padding: 1% 2% 6% 2%;
   color: #000000;
   background-color: #ffffff; /* Couleur par défaut */
   transform: skewY(5deg); /* Inclinaison vers le haut */
@@ -146,6 +140,11 @@ export default {
 .Title > *,
 .Skills > * {
   transform: skewY(-5deg); /* Annule l'inclinaison pour le contenu */
+}
+
+/* Section Title */
+h1 {
+  padding-top: 6rem;
 }
 
 /* Section skills */
@@ -203,7 +202,7 @@ export default {
 .APropos,
 .Projects {
   position: relative;
-  padding: 5rem;
+  padding: 1% 2% 6% 2%;
   color: #000000;
   background-color: #b0e0e6; /* Bleu pastel */
   transform: skewY(5deg); /* Inclinaison vers le haut */
@@ -291,6 +290,9 @@ export default {
     width: auto; /* Laisse l'image s'adapter automatiquement */
     height: 100px; /* Conserve les proportions de l'image */
     object-fit: contain;
+  }
+  h1 {
+    padding-top: 1rem;
   }
 }
 </style>

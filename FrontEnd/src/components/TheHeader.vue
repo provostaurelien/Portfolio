@@ -1,8 +1,8 @@
 <template>
-  <div :class="['header', isDarkMode ? 'dark' : 'light']">
+  <div :class="{ dark: isDark }">
     <!-- Logo -->
     <div class="logo">
-      <img :src="isDarkMode ? darkLogo : lightLogo" alt="Logo du site" />
+      <img :src="isDark ? darkLogo : lightLogo" alt="Logo du site" />
     </div>
 
     <!-- Liens de navigation -->
@@ -25,10 +25,15 @@ import darkLogo from '@/assets/logo/WhiteLogo.png'
 import lightLogo from '@/assets/logo/BlackLogo.png'
 
 export default {
+  name: 'TheHeader',
+  props: {
+    isDark: {
+      type: Boolean,
+      required: true,
+    },
+  },
   data() {
     return {
-      isMobile: window.innerWidth <= 768, // Détection mobile
-      isDarkMode: window.matchMedia('(prefers-color-scheme: dark)').matches, // Mode sombre
       darkLogo,
       lightLogo,
       links: [
@@ -39,33 +44,10 @@ export default {
       ],
     }
   },
-  methods: {
-    updateViewport() {
-      this.isMobile = window.innerWidth <= 768
-    },
-    updateDarkMode(e) {
-      this.isDarkMode = e.matches
-    },
-  },
-  mounted() {
-    // Écoute des changements de taille d'écran
-    window.addEventListener('resize', this.updateViewport)
-
-    // Écoute des changements de mode sombre
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', this.updateDarkMode)
-  },
-  beforeUnmount() {
-    window.removeEventListener('resize', this.updateViewport)
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .removeEventListener('change', this.updateDarkMode)
-  },
 }
 </script>
 
-<style scoped>
+<style>
 /* Styles globaux */
 .header {
   display: flex; /* Flexbox pour aligner les éléments */
@@ -77,8 +59,8 @@ export default {
   background-color: white;
   color: black;
 }
-.dark {
-  background-color: #2c2c2c;
+.dark .header {
+  background-color: #2c2c2c !important;
   color: white;
 }
 
@@ -96,7 +78,6 @@ export default {
 
 /* Style des liens */
 .nav-link {
-  display: block;
   margin-bottom: 10px;
   text-decoration: none; /* Supprime le style par défaut des liens HTML */
   color: inherit; /* Adapte la couleur au mode clair/sombre */
@@ -111,6 +92,9 @@ export default {
 /* Sidebar Desktop */
 @media (min-width: 768px) {
   .header {
+    position: fixed; /* Fixe la sidebar sur le côté gauche */
+    top: 0;
+    left: 0;
     width: 15%; /* Sidebar occupe une largeur fixe en desktop */
     padding: 20px;
     font-size: 30px;
@@ -129,12 +113,16 @@ export default {
 
 /* Header Mobile */
 @media (max-width: 768px) {
-  /* Header en vue mobile */
   .header {
-    flex-direction: row; /* Aligne les enfants horizontalement (logo + liens) */
-    height: auto; /* Ajuste automatiquement la hauteur selon le contenu */
-    padding: 10px; /* Ajoute un espacement autour du header mobile */
-    align-items: center; /* Centre verticalement le logo et les liens */
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   }
 
   .logo img {

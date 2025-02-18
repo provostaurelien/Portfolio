@@ -1,9 +1,44 @@
+<template>
+  <div :class="['SendContact', { dark: isDark }]">
+    <h1>Contactez-moi</h1>
+    <form @submit.prevent="submitContactForm">
+      <div>
+        <label for="name">Nom :</label>
+        <input id="name" v-model="contactForm.name" type="text" placeholder="Votre nom" />
+      </div>
+      <div>
+        <label for="email">Email :</label>
+        <input id="email" v-model="contactForm.email" type="email" placeholder="Votre email" />
+      </div>
+      <div>
+        <label for="message">Message :</label>
+        <textarea id="message" v-model="contactForm.message" placeholder="Votre message"></textarea>
+      </div>
+
+      <!-- Affichage des messages -->
+      <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
+      <div v-if="successMessage" class="success">{{ successMessage }}</div>
+
+      <!-- Bouton d'envoi -->
+      <button type="submit" :disabled="isSubmitting">
+        {{ isSubmitting ? 'Envoi en cours...' : 'Envoyer' }}
+      </button>
+    </form>
+  </div>
+</template>
+
 <script>
 import { ref } from 'vue'
 import { sendContactMessage } from '@/api/Api.js' // Fonction API pour envoyer le message
 
 export default {
   name: 'ContactForm',
+  props: {
+    isDark: {
+      type: Boolean,
+      required: true,
+    },
+  },
   setup() {
     const contactForm = ref({
       name: '',
@@ -57,7 +92,7 @@ export default {
         contactForm.value = { name: '', email: '', message: '' } // Réinitialisation du formulaire
       } catch (error) {
         console.error("Erreur lors de l'envoi du message", error)
-        errorMessage.value = "Une erreur est survenue lors de l'envoi du message."
+        errorMessage.value = "Une erreur survint lors de l'envoi du message."
       } finally {
         isSubmitting.value = false
       }
@@ -74,35 +109,6 @@ export default {
 }
 </script>
 
-<template>
-  <div>
-    <h2>Contactez-nous</h2>
-    <form @submit.prevent="submitContactForm">
-      <div>
-        <label for="name">Nom :</label>
-        <input id="name" v-model="contactForm.name" type="text" placeholder="Votre nom" />
-      </div>
-      <div>
-        <label for="email">Email :</label>
-        <input id="email" v-model="contactForm.email" type="email" placeholder="Votre email" />
-      </div>
-      <div>
-        <label for="message">Message :</label>
-        <textarea id="message" v-model="contactForm.message" placeholder="Votre message"></textarea>
-      </div>
-
-      <!-- Affichage des messages -->
-      <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
-      <div v-if="successMessage" class="success">{{ successMessage }}</div>
-
-      <!-- Bouton d'envoi -->
-      <button type="submit" :disabled="isSubmitting">
-        {{ isSubmitting ? 'Envoi en cours...' : 'Envoyer' }}
-      </button>
-    </form>
-  </div>
-</template>
-
 <style>
 .error {
   color: red;
@@ -111,5 +117,32 @@ export default {
 .success {
   color: green;
   margin-top: 10px;
+}
+.SendContact {
+  position: relative;
+  padding: 1% 2% 6% 2%;
+  color: #000000;
+  background-color: #ffffff; /* Couleur par défaut */
+  transform: skewY(5deg); /* Inclinaison vers le haut */
+  transform-origin: top right;
+}
+
+.SendContact.dark {
+  background-color: #2c2c2c; /* Gris anthracite */
+  color: #ffffff;
+}
+
+.SendContact > * {
+  transform: skewY(-5deg); /* Annule l'inclinaison pour le contenu */
+}
+
+h1 {
+  padding-top: 6rem;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    padding-top: 1rem;
+  }
 }
 </style>

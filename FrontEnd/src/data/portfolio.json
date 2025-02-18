@@ -2,22 +2,56 @@
   {
     "id": 1,
     "image": "image1.png",
-    "title": "Booki",
-    "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "title": "Sophie Bluel",
+    "Description": "Développement du front-end d'un site d'architecte en Javascript",
+    "Details": "A partir d'un Back-end déja mis à disposition, développement du front-end d'une page web dynamique en Javascript avec authentification, modale et appel API ",
+    "Plus": "Mise en place d'une authentification via cookies en plus du localstorage",
+    "FichierSup1": "",
+    "FichierSup2": "",
     "link": "#"
   },
   {
     "id": 2,
     "image": "image2.png",
-    "title": "Mon Vieux grimoire",
-    "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "title": "Kasa",
+    "Description": "Développement du front-end React d'une application web de location immobillière",
+    "Détails": "A partir d'un Back-end déja mis à disposition, Construction de l'intégralité du front-end en react d'une application dynamique avec vue reponsive. Le builder Vite a était choisir pour la mise en palce de react ",
+    "Plus": "Mise en place de tests unitaires front sur un composant avec state et un sans state ",
+    "FichierSup1": "",
+    "FichierSup2": "",
     "link": "#"
   },
   {
     "id": 3,
     "image": "image3.png",
-    "title": "Kasa",
-    "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "title": "Eco Bliss Bath",
+    "Description": "Automatisation des tests pour une boutique en ligne",
+    "text": "Ecriture, création et réalisation de tests E2E et API pour une boutique en ligne à l'aide de cypress, des choix ont du être fait pour la priorisation et le choix des tests à cause de critères économiques",
+    "Plus": "Création de tests sous Selenium pour une analyse des points forts et faibles des deux logiciels",
+    "FichierSup1": "",
+    "FichierSup2": "",
+    "link": "#"
+  },
+  {
+    "id": 4,
+    "image": "image4.png",
+    "title": "Tomsen",
+    "Description": "Conception d'une stratégie de test",
+    "text": "A partir d'un kanban, réalisation d'une stratégie de tests, d'un cahier de recette ainsi que l'analyse de spécifications fonctionnelles",
+    "Plus": "",
+    "FichierSup1": "",
+    "FichierSup2": "",
+    "link": "#"
+  },
+  {
+    "id": 5,
+    "image": "image5.png",
+    "title": "Mon Portfolio",
+    "Description": "Conception d'un site web multipage back-end symfony et front-end vue.js et des différentes type de tests",
+    "text": "Le site sur lequel vous êtes est mon projet de fin d'études, le but n'étant pas de devenir développeur web mais j'ai toujours aimé comprendre comment cela fonctionne, cela me permet de comprendre les tenants et aboutissants des différents tests pour concevoir une stratégie de tests. Le back-end a été créé en collaboration avec une IA. Côté front-end, j'ai voulu changé de react pour explorer vue.js, le test unitaire des composants, les test api et cypress du site",
+    "Plus": "En tant que testeur QA, j'ai voulu coder la documentation API via un swagger ainsi qu'un test unitaire back-end",
+    "FichierSup1": "",
+    "FichierSup2": "",
     "link": "#"
   }
 ]
