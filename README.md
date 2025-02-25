@@ -18,7 +18,8 @@ Serveur Apache et base de données installé en local (exemple [MAMP pour window
 2. Sur le dossier backend lancer la commande : `composer install`
 3. Sur le dossier Frontend : `npm install`
 4. Configurez les variables d'environnement dans le fichier `.env` du backend à partir du fichier `exemple.env`, comme : `DATABASE_URL="mysql://user:password@127.0.0.1:3306/database_name?serverVersion=8&charset=utf8mb4"`
-5. Initialisation de la base de données depuis le dossier backend : `symfony console doctrine:database:create`
+5. Mise à jour de la clé recaptcha dans le fichier `main.js` du frontend
+6. Initialisation de la base de données depuis le dossier backend : `symfony console doctrine:database:create`
 
 
 ## Lancement des serveurs en local

@@ -89,7 +89,7 @@ export default {
   text-align: center;
   background-color: white; /* Fond blanc pour l'effet polaroid */
   padding: 20px; /* Espace entre l'image et la bordure */
-  border: 1px solid #ccc; /* Bordure grise légère */
+  border: 1px solid #ccc;
   border-radius: 5px; /* Coins légèrement arrondis */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour l'effet de profondeur */
   margin: auto;

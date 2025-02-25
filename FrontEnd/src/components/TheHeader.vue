@@ -49,7 +49,6 @@ export default {
 </script>
 
 <style>
-/* Styles globaux */
 .header {
   display: flex; /* Flexbox pour aligner les éléments */
   height: 100vh; /* Hauteur forcée pour desktop */
@@ -73,8 +72,8 @@ export default {
 
 /* Liens de navigation */
 .nav-links {
-  display: flex; /* Par défaut, les liens sont alignés horizontalement */
-  flex-direction: column; /* Empile les liens verticalement (desktop sidebar) */
+  display: flex;
+  flex-direction: column;
   margin-top: 20px;
 }
 
@@ -82,7 +81,7 @@ export default {
 .nav-link {
   margin-bottom: 30px;
   text-decoration: none; /* Supprime le style par défaut des liens HTML */
-  color: inherit; /* Adapte la couleur au mode clair/sombre */
+  color: inherit;
 }
 .nav-link:hover {
   text-decoration: underline; /* Soulignement au survol */
@@ -131,9 +130,9 @@ export default {
   }
 
   .nav-links {
-    flex-direction: row; /* Aligne les liens horizontalement en mobile */
-    gap: 15px; /* Ajoute un espacement uniforme entre les liens */
-    margin-top: 20; /* Supprime l'espacement vertical par défaut en mobile */
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 20;
   }
 }
 </style>

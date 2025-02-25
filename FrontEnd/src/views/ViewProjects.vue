@@ -71,25 +71,25 @@ export default {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background-color: var(--secondary-color-light); /* Bleu pastel */
+  background-color: var(--secondary-color-light);
 }
 
 .ProjectsPage.dark {
-  background-color: var(--secondary-color-dark); /* Bleu marine */
+  background-color: var(--secondary-color-dark);
   color: var(--text-color-dark);
 }
 
 .ProjectPresentation {
   position: relative;
   padding: 1% 2% 6% 2%;
-  background-color: var(--primary-color-light); /* Couleur par défaut */
+  background-color: var(--primary-color-light);
   color: var(--text-color-light);
   transform: skewY(5deg); /* Inclinaison vers le haut */
   transform-origin: top right;
 }
 
 .ProjectPresentation.dark {
-  background-color: var(--primary-color-dark); /* Gris anthracite */
+  background-color: var(--primary-color-dark);
   color: var(--text-color-dark);
 }
 
@@ -106,17 +106,17 @@ export default {
   justify-content: center; /* Centre les éléments si une seule carte sur la dernière ligne */
   height: 100%; /* Prend toute la hauteur disponible */
   width: 100%; /* Prend toute la largeur disponible */
-  background-color: var(--secondary-color-ligh); /* Bleu pastel */
+  background-color: var(--secondary-color-ligh);
 }
 
 .ProjectList.dark {
-  background-color: var(--secondary-color-dark); /* Bleu marine */
+  background-color: var(--secondary-color-dark);
   color: var(--text-color-dark);
 }
 
 .ProjectCard {
   flex: 1 1 calc(50% - 60px); /* Deux cartes par ligne (50% - espace entre les cartes) */
-  max-width: calc(50% - 60px); /* Limite la largeur des cartes */
+  max-width: calc(50% - 60px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -138,8 +138,7 @@ export default {
 /* Conteneur pour centrer l'image */
 .ImageContainer {
   display: flex;
-  justify-content: center; /* Centre horizontalement */
-  align-items: center; /* Centre verticalement */
+  justify-content: center;
 }
 
 .ImageContainer img {
@@ -166,7 +165,7 @@ export default {
 
 .carousel-link:hover h2,
 .carousel-link:hover p {
-  color: #ff6600; /* Couleur au survol */
+  color: #ff6600;
 }
 
 /* Responsive : une seule colonne sur mobile */

@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class VisitorController extends AbstractController
 {
     /**
-     * @Route("/api/visitor", methods={"GET"})
+     * @Route("/api/visitor", methods={"GET"}) 
      */
     public function getVisitorCount(EntityManagerInterface $em): JsonResponse
     {

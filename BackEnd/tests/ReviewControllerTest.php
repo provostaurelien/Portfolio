@@ -12,7 +12,7 @@ class ReviewControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Effectuer une requête GET
-        $client->request('GET', '/api/reviews');
+        $client->request('GET', '/api/reviews/no-recaptcha');
 
         // Vérifier que la réponse est réussie
         $this->assertResponseIsSuccessful();
@@ -29,7 +29,7 @@ class ReviewControllerTest extends WebTestCase
         // Effectuer une requête POST pour ajouter un avis
         $client->request(
             'POST',
-            '/api/reviews',
+            '/api/reviews/no-recaptcha',
             [],
             [],
             ['CONTENT_TYPE' => 'application/json'],
