@@ -35,13 +35,13 @@ export default {
 .ReviewPage {
   display: flex;
   flex-direction: column;
-  height: 100%; /* Prend toute la hauteur disponible */
-  width: 100%; /* Prend toute la largeur disponible */
-  background-color: var(--secondary-color-light); /* Bleu pastel */
+  height: 100%;
+  width: 100%;
+  background-color: var(--secondary-color-light);
 }
 
 .ReviewPage.dark {
-  background-color: var(--secondary-color-dark); /* Bleu marine */
+  background-color: var(--secondary-color-dark);
   color: var(--text-color-dark);
 }
 

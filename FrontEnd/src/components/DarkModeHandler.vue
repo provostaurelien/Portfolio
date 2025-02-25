@@ -49,17 +49,17 @@ export default {
   z-index: 1000;
 }
 
-/* Style de base pour l'icône */
+
 .dark-mode-toggle .fa-circle-half-stroke {
   transition: color 0.3s ease; /* Animation douce lors du changement */
 }
 
-/* Couleur pour le mode sombre */
+
 .dark-icon {
   color: var(--text-color-dark);
 }
 
-/* Couleur pour le mode clair */
+
 .light-icon {
   color: var(--text-color-light);
 }

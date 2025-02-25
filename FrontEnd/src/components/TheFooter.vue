@@ -36,11 +36,11 @@ export default {
 <style scoped>
 .footer {
   display: flex; /* Flexbox pour aligner les éléments horizontalement */
-  justify-content: space-between; /* Espace entre les deux parties (mention et e-mail) */
-  align-items: center; /* Centre verticalement les éléments */
+  justify-content: space-between;
+  align-items: center;
   padding: 10px 20px 10px 17%;
   position: relative;
-  background-color: inherit; /* Respecte les couleurs du mode clair/sombre */
+  background-color: inherit;
   color: inherit;
   /*clip-path: path('M0,300 C150,400 3650,0 500,00 L500,00 L0,0 Z'); /* Forme de vague */
 }
@@ -57,12 +57,12 @@ export default {
 
 .footer-link {
   text-decoration: none;
-  color: inherit; /* Hérite de la couleur actuelle */
+  color: inherit;
   cursor: pointer;
 }
 
 .footer-link:hover {
-  color: inherit; /* Empêche le changement de couleur au survol */
+  color: inherit;
   text-decoration: underline;
 }
 

@@ -92,7 +92,7 @@ export default {
 }
 
 .trace {
-  font-size: 2rem; /* Taille des traces */
+  font-size: 2rem;
 }
 
 .rabbit-button {
@@ -100,6 +100,6 @@ export default {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 3rem; /* Taille du lapin */
+  font-size: 3rem;
 }
 </style>

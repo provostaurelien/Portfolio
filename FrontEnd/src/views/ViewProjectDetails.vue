@@ -50,6 +50,7 @@
 <script>
 // Importation des données JSON
 import projectsData from '@/data/portfolio.json'
+import '../assets/styles/global.css'
 
 export default {
   props: {
@@ -94,7 +95,7 @@ export default {
 
     // Si aucun projet n'est trouvé, rediriger vers la page d'erreur
     if (!this.project) {
-      this.$router.push({ name: 'NotFound' }) // Redirection vers la route "NotFound"
+      this.$router.push({ name: 'NotFound' })
     }
   },
 }
@@ -104,12 +105,12 @@ export default {
 .ProjectDetails {
   height: 100%;
   width: 100%;
-  background-color: #b0e0e6; /* Bleu pastel */
+  background-color: var(--secondary-color-light);
 }
 
 .ProjectDetails.dark {
-  background-color: #001f3f; /* Bleu marine */
-  color: white;
+  background-color: var(--secondary-color-dark);
+  color: var(--text-color-dark);
 }
 
 .Title {
@@ -117,8 +118,8 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 1% 2% 6% 2%;
-  color: #000000;
-  background-color: #ffffff; /* Couleur par défaut */
+  color: var(--text-color-light);
+  background-color: var(--primary-color-light);
   transform: skewY(5deg); /* Inclinaison vers le haut */
   transform-origin: top right;
 }
@@ -133,9 +134,9 @@ h1 {
 
 .Title-section {
   display: flex;
-  flex-direction: column; /* Aligne les enfants verticalement */
-  align-items: center; /* Centre horizontalement */
-  text-align: center; /* Centre le texte */
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   padding-top: 20px;
   margin-left: 16px;
 }
@@ -147,8 +148,8 @@ h1 {
   padding: 10px 20px;
   font-size: 1.2rem;
   font-weight: bold;
-  color: black;
-  background-color: #b0e0e6;
+  color: var(--text-color-light);
+  background-color: var(--secondary-color-light);
   border: none;
   border-radius: 25px;
   text-decoration: none;
@@ -158,17 +159,17 @@ h1 {
 }
 
 .project-button.dark {
-  color: white;
-  background-color: #001f3f;
+  color: var(--text-color-dark);
+  background-color: var(--secondary-color-dark);
 }
 
 .project-button:hover {
-  background-color: #4da8c6;
+  background-color: var(--third-color-light);
   transform: scale(1.05); /* Légère mise en avant */
 }
 
 .project-button.dark:hover {
-  background-color: #007198;
+  background-color: var(--third-color-dark);
 }
 
 .project-button .arrow {
@@ -199,8 +200,7 @@ h1 {
 }
 
 .Title.dark {
-  background-color: #2c2c2c; /* Gris anthracite */
-  color: #ffffff;
+  background-color: var(--primary-color-dark);
 }
 
 .Title > * {
@@ -210,15 +210,15 @@ h1 {
 .Description {
   position: relative;
   padding: 1% 2% 6% 2%;
-  color: #000000;
-  background-color: #b0e0e6; /* Bleu pastel */
+  color: var(--text-color-light);
+  background-color: var(--secondary-color-light); /* Bleu pastel */
   transform: skewY(5deg); /* Inclinaison vers le haut */
   transform-origin: top right;
 }
 
 .Description.dark {
-  background-color: #001f3f; /* Bleu marine */
-  color: white;
+  background-color: var(--secondary-color-dark); /* Bleu marine */
+  color: var(--text-color-dark);
 }
 
 /* Correction pour le contenu interne */
@@ -254,12 +254,12 @@ h1 {
 .files a {
   display: block;
   text-decoration: none; /* Supprime le soulignement */
-  color: #000000;
+  color: var(--text-color-light);
   padding: 20px 0px;
 }
 
 .files.dark a {
-  color: white;
+  color: var(--text-color-dark);
 }
 
 .files a:hover {

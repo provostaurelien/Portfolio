@@ -77,12 +77,12 @@ export default {
     },
   },
   components: {
-    VisitorTracker, // Enregistrement du composant
-    CarousselPortfolio, //Enregistrement du composant caroussel
+    VisitorTracker,
+    CarousselPortfolio,
   },
   data() {
     return {
-      birthDate: new Date(1987, 11, 6), // Votre date de naissance (mois indexé à partir de 0)
+      birthDate: new Date(1987, 11, 6), // Date de naissance (mois indexé à partir de 0)
       AvatarSrc: Avatar,
       skills: [], // Liste réactive des compétences
     }
@@ -116,7 +116,7 @@ export default {
 </script>
 
 <style scoped>
-/* Section "title" et Skills */
+
 .Title,
 .Skills {
   position: relative;
@@ -132,7 +132,7 @@ export default {
 
 .Title.dark,
 .Skills.dark {
-  background-color: var(--primary-color-dark); /* Gris anthracite */
+  background-color: var(--primary-color-dark);
   color: var(--text-color-dark);
 }
 
@@ -150,15 +150,15 @@ h1 {
 /* Section skills */
 
 /* Styles pour les cartes */
-/* Grille des cartes */
+
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Trois colonnes */
-  gap: 1.5rem; /* Espacement entre les cartes */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
   padding-top: 30px;
 }
 
-/* Styles pour les cartes */
+
 .card {
   border-radius: 8px; /* Coins arrondis */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
@@ -189,7 +189,7 @@ h1 {
 
 .card-text {
   font-size: 1rem;
-  text-align: center; /* Centre le texte */
+  text-align: center;
 }
 
 /* Section "APropos" et "Projects" */
@@ -197,7 +197,7 @@ h1 {
 .Projects {
   position: relative;
   padding: 1% 2% 6% 2%;
-  background-color: var(--secondary-color-light); /* Bleu pastel */
+  background-color: var(--secondary-color-light);
   color: var(--text-color-light);
   transform: skewY(5deg); /* Inclinaison vers le haut */
   transform-origin: top right;
@@ -217,16 +217,16 @@ h1 {
 
 /* Section APropos */
 .APropos-container {
-  display: flex; /* Utilisation de Flexbox */
-  align-items: center; /* Aligne verticalement au centre */
-  gap: 2rem; /* Espacement entre les colonnes */
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .APropos-image img {
   width: 200px; /* Largeur fixe pour l'image */
   height: auto; /* Garde les proportions */
   border-radius: 50%; /* Rend l'image circulaire */
-  object-fit: cover; /* Ajuste l'image si nécessaire */
+  object-fit: cover;
 }
 
 .APropos-content {
@@ -238,7 +238,7 @@ h1 {
 }
 
 .APropos-content p {
-  line-height: 1.6; /* Améliore la lisibilité du texte */
+  line-height: 1.6;
 }
 
 /* section "Projects" */
@@ -252,11 +252,11 @@ h1 {
 /* Gestion du background pour le triangle restant en bas à droite */
 
 .Home {
-  background-color: var(--secondary-color-light); /* Bleu pastel */
+  background-color: var(--secondary-color-light);
 }
 
 .Home.dark {
-  background-color: var(--secondary-color-dark); /* Bleu marine */
+  background-color: var(--secondary-color-dark);
   color: var(--text-color-dark);
 }
 
@@ -272,7 +272,7 @@ h1 {
 
 @media (max-width: 768px) {
   .APropos-container {
-    display: block; /* Utilisation de Flexbox */
+    display: block;
     align-items: center; /* Aligne verticalement au centre */
   }
   .APropos-image {
@@ -283,8 +283,8 @@ h1 {
 
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(1, 1fr); /* Trois colonnes */
-    gap: 1.5rem; /* Espacement entre les cartes */
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
   }
   .card-image {
     width: auto; /* Laisse l'image s'adapter automatiquement */

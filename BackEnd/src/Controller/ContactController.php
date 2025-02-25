@@ -18,7 +18,7 @@ class ContactController extends AbstractController
     {
         $this->router = $router;
     }
-
+    // Fonction pour envoyer l'email via mailer
     public function sendEmail(Request $request, MailerInterface $mailer): JsonResponse
     {
         $data = json_decode($request->getContent(), true);

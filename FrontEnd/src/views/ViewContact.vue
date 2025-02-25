@@ -57,11 +57,11 @@ export default {
   flex-direction: column;
   height: 100%; /* Prend toute la hauteur disponible */
   width: 100%; /* Prend toute la largeur disponible */
-  background-color: var(--secondary-color-light); /* Bleu pastel */
+  background-color: var(--secondary-color-light); 
 }
 
 .ContactPage.dark {
-  background-color: var(--secondary-color-dark); /* Bleu marine */
+  background-color: var(--secondary-color-dark); 
   color: var(--text-color-dark);
 }
 
@@ -71,13 +71,13 @@ export default {
   flex-direction: column;
   padding: 1% 2% 6% 2%;
   color: var(--text-color-light);
-  background-color: var(--secondary-color-light); /* Bleu pastel */
+  background-color: var(--secondary-color-light); 
   transform: skewY(5deg); /* Inclinaison vers le haut */
   transform-origin: top right;
 }
 
 .MoreContact.dark {
-  background-color: var(--secondary-color-dark); /* Bleu marine */
+  background-color: var(--secondary-color-dark); 
   color: var(--text-color-dark);
 }
 
