@@ -55,7 +55,7 @@
       <h2>Mes projets</h2>
       <div class="Caroussel">
         <!-- Utilisation du composant -->
-        <CarousselPortfolio />
+        <CarousselPortfolio :is-dark="isDark" />
       </div>
     </section>
   </div>
@@ -67,6 +67,7 @@ import VisitorTracker from '@/components/Visitor.vue'
 import Avatar from '@/assets/pictures/avatar.png'
 import skillsData from '@/data/skills.json'
 import CarousselPortfolio from '@/components/CarousselPortfolio.vue'
+import '../assets/styles/global.css'
 
 export default {
   props: {
@@ -120,8 +121,8 @@ export default {
 .Skills {
   position: relative;
   padding: 1% 2% 6% 2%;
-  color: #000000;
-  background-color: #ffffff; /* Couleur par défaut */
+  background-color: var(--primary-color-light);
+  color: var(--text-color-light);
   transform: skewY(5deg); /* Inclinaison vers le haut */
   transform-origin: top right;
   transition:
@@ -131,8 +132,8 @@ export default {
 
 .Title.dark,
 .Skills.dark {
-  background-color: #2c2c2c; /* Gris anthracite */
-  color: #ffffff;
+  background-color: var(--primary-color-dark); /* Gris anthracite */
+  color: var(--text-color-dark);
 }
 
 /* Correction pour le contenu interne */
@@ -196,16 +197,16 @@ h1 {
 .Projects {
   position: relative;
   padding: 1% 2% 6% 2%;
-  color: #000000;
-  background-color: #b0e0e6; /* Bleu pastel */
+  background-color: var(--secondary-color-light); /* Bleu pastel */
+  color: var(--text-color-light);
   transform: skewY(5deg); /* Inclinaison vers le haut */
   transform-origin: top right;
 }
 
 .APropos.dark,
 .Projects.dark {
-  background-color: #001f3f; /* Bleu marine */
-  color: white;
+  background-color: var(--secondary-color-dark);
+  color: var(--text-color-dark);
 }
 
 /* Correction pour le contenu interne */
@@ -251,12 +252,12 @@ h1 {
 /* Gestion du background pour le triangle restant en bas à droite */
 
 .Home {
-  background-color: #b0e0e6; /* Bleu pastel */
+  background-color: var(--secondary-color-light); /* Bleu pastel */
 }
 
 .Home.dark {
-  background-color: #001f3f; /* Bleu marine */
-  color: white;
+  background-color: var(--secondary-color-dark); /* Bleu marine */
+  color: var(--text-color-dark);
 }
 
 /* Supprime tout espace entre les sections */

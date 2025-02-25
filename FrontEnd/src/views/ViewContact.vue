@@ -24,6 +24,7 @@ import darkLinkedIn from '@/assets/pictures/contact/Linkedin.png'
 import lightLinkedin from '@/assets/pictures/contact/LinkedinLight.png'
 import darkMail from '@/assets/pictures/contact/Email.png'
 import lightMail from '@/assets/pictures/contact/EmailLight.png'
+import '../assets/styles/global.css'
 
 export default {
   name: 'ViewContact',
@@ -56,12 +57,12 @@ export default {
   flex-direction: column;
   height: 100%; /* Prend toute la hauteur disponible */
   width: 100%; /* Prend toute la largeur disponible */
-  background-color: #b0e0e6; /* Bleu pastel */
+  background-color: var(--secondary-color-light); /* Bleu pastel */
 }
 
 .ContactPage.dark {
-  background-color: #001f3f; /* Bleu marine */
-  color: white;
+  background-color: var(--secondary-color-dark); /* Bleu marine */
+  color: var(--text-color-dark);
 }
 
 .MoreContact {
@@ -69,15 +70,15 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 1% 2% 6% 2%;
-  color: #000000;
-  background-color: #b0e0e6; /* Bleu pastel */
+  color: var(--text-color-light);
+  background-color: var(--secondary-color-light); /* Bleu pastel */
   transform: skewY(5deg); /* Inclinaison vers le haut */
   transform-origin: top right;
 }
 
 .MoreContact.dark {
-  background-color: #001f3f; /* Bleu marine */
-  color: white;
+  background-color: var(--secondary-color-dark); /* Bleu marine */
+  color: var(--text-color-dark);
 }
 
 /* Correction pour le contenu interne */

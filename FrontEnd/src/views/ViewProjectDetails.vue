@@ -8,7 +8,7 @@
         class="Logo"
       />
       <div class="Title-section">
-        <h2>{{ project.title }}</h2>
+        <h1>{{ project.title }}</h1>
         <br />
         <a
           v-if="project.link"
@@ -25,56 +25,21 @@
     <!-- Deuxième partie : Description + Détails + Plus -->
     <section :class="['Description', { dark: isDark }]">
       <p><strong>Description :</strong> {{ project.Description }}</p>
-      <p><strong>Détails :</strong> {{ project.Details }}</p>
+      <p><strong>Détails :</strong> <span v-html="project.Details"></span></p>
       <p v-if="project.Plus"><strong>Le petit plus :</strong> {{ project.Plus }}</p>
 
       <!-- Fichiers supplémentaires -->
-      <div
-        v-if="project.FichierSup1 || project.FichierSup2 || project.FichierSup3"
-        :class="['files', { dark: isDark }]"
-      >
-        <!-- Fichier 1 -->
-        <div v-if="project.FichierSup1">
-          <template v-if="isVideo(project.FichierSup1)">
-            <video controls :src="project.FichierSup1"></video>
+      <div v-if="additionalFiles.length" :class="['files', { dark: isDark }]">
+        <!-- Boucle sur les fichiers supplémentaires -->
+        <div v-for="(file, index) in additionalFiles" :key="index">
+          <template v-if="isVideo(file)">
+            <video controls :src="file"></video>
           </template>
-          <template v-else-if="isImage(project.FichierSup1)">
-            <img :src="project.FichierSup1" alt="Image supplémentaire" />
+          <template v-else-if="isImage(file)">
+            <img :src="file" alt="Image supplémentaire" />
           </template>
           <template v-else>
-            <a :href="project.FichierSup1" download
-              >Télécharger la ressource : {{ getFileName(project.FichierSup1) }}</a
-            >
-          </template>
-        </div>
-
-        <!-- Fichier 2 -->
-        <div v-if="project.FichierSup2">
-          <template v-if="isVideo(project.FichierSup2)">
-            <video controls :src="project.FichierSup2"></video>
-          </template>
-          <template v-else-if="isImage(project.FichierSup2)">
-            <img :src="project.FichierSup2" alt="Image du site 1" />
-          </template>
-          <template v-else>
-            <a :href="project.FichierSup2" download
-              >Télécharger la ressource : {{ getFileName(project.FichierSup2) }}</a
-            >
-          </template>
-        </div>
-
-        <!-- Fichier 3 -->
-        <div v-if="project.FichierSup3">
-          <template v-if="isVideo(project.FichierSup3)">
-            <video controls :src="project.FichierSup3"></video>
-          </template>
-          <template v-else-if="isImage(project.FichierSup3)">
-            <img :src="project.FichierSup3" alt="Image du site 2" />
-          </template>
-          <template v-else>
-            <a :href="project.FichierSup3" download
-              >Télécharger la ressource : {{ getFileName(project.FichierSup3) }}</a
-            >
+            <a :href="file" download> Télécharger la ressource : {{ getFileName(file) }} </a>
           </template>
         </div>
       </div>
@@ -97,6 +62,16 @@ export default {
     return {
       project: null, // Projet spécifique chargé
     }
+  },
+  computed: {
+    additionalFiles() {
+      // Filtrer les fichiers supplémentaires non nuls
+      return [
+        this.project?.FichierSup1,
+        this.project?.FichierSup2,
+        this.project?.FichierSup3,
+      ].filter((file) => !!file)
+    },
   },
   methods: {
     isVideo(file) {
@@ -148,9 +123,12 @@ export default {
   transform-origin: top right;
 }
 
-.Logo,
-h1 {
+.Logo {
   padding-top: 6rem;
+}
+
+h1 {
+  padding-top: 2rem;
 }
 
 .Title-section {
@@ -292,6 +270,7 @@ h1 {
   .Title {
     flex-direction: column;
   }
+  .Logo,
   h1 {
     padding-top: 2rem;
   }

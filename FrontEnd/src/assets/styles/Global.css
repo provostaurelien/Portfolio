@@ -1,3 +1,16 @@
+/* Déclaration des variables globales */
+:root {
+  --primary-color-dark: #2c2c2c;
+  --secondary-color-dark: #001f3f;
+  --third-color-dark: #007198;
+  --primary-color-light: #ffffff;
+  --secondary-color-light: #b0e0e6;
+  --third-color-light: #4da8c6;
+
+  --text-color-dark: #ffffff;
+  --text-color-light: #000000;
+}
+
 * {
   margin: 0;
   padding: 0;

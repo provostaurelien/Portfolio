@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import '../assets/styles/global.css'
 export default {
   props: {
     isDark: {
@@ -45,8 +46,8 @@ export default {
 }
 
 .footer.dark {
-  background-color: #343a40; /* Couleur sombre */
-  color: white;
+  background-color: var(--primary-color-dark); /* Couleur sombre */
+  color: var(--text-color-dark);
 }
 
 .footer-links {

@@ -18,12 +18,21 @@
       </transition>
     </div>
     <!-- Compteur -->
-    <div class="carousel-counter">{{ currentIndex + 1 }}/{{ items.length }}</div>
+    <div :class="['carousel-counter', { dark: isDark }]">
+      {{ currentIndex + 1 }}/{{ items.length }}
+    </div>
   </div>
 </template>
 
 <script>
+import '../assets/styles/global.css'
 export default {
+  props: {
+    isDark: {
+      type: Boolean,
+      required: true,
+    },
+  },
   data() {
     return {
       items: [], // Stocke les données du JSON
@@ -129,9 +138,12 @@ h3 {
   text-align: center;
   margin-top: 10px;
   font-size: 16px;
-  color: #333;
+  color: var(--text-color-light);
 }
 
+.carousel-counter.dark {
+  color: var(--text-color-dark);
+}
 .carousel-container:hover .carousel-image {
   cursor: pointer;
 }

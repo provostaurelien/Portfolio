@@ -1,7 +1,7 @@
 <template>
   <div :class="['SendContact', { dark: isDark }]">
     <h1>Contactez-moi</h1>
-    <form :class="{ dark: isDark }" @submit.prevent="submitContactForm">
+    <form :class="{ dark: isDark }" @submit.prevent="submitContactForm" label>
       <div>
         <label for="name">Nom :</label>
         <input id="name" v-model="contactForm.name" type="text" placeholder="Votre nom" />
@@ -30,6 +30,7 @@
 <script>
 import { ref } from 'vue'
 import { sendContactMessage } from '../api/Api.js' // Fonction API pour envoyer le message
+import '../assets/styles/global.css'
 
 export default {
   name: 'ContactForm',
@@ -121,15 +122,23 @@ export default {
 .SendContact {
   position: relative;
   padding: 1% 2% 6% 2%;
-  color: #000000;
-  background-color: #ffffff; /* Couleur par défaut */
+  background-color: var(--primary-color-light);
+  color: var(--text-color-light);
   transform: skewY(5deg); /* Inclinaison vers le haut */
   transform-origin: top right;
 }
 
+form button {
+  color: var(--text-color-light);
+}
+
 .SendContact.dark {
-  background-color: #2c2c2c; /* Gris anthracite */
-  color: #ffffff;
+  background-color: var(--primary-color-dark);
+  color: var(--text-color-dark);
+}
+
+form button.dark {
+  color: var(--text-color-dark);
 }
 
 .SendContact > * {

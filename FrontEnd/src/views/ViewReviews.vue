@@ -8,6 +8,7 @@
 // Importation du composant Reviews
 import { ref } from 'vue'
 import AllReviews from '@/components/ReviewsCall.vue'
+import '../assets/styles/global.css'
 
 export default {
   name: 'ViewReviews',
@@ -36,12 +37,12 @@ export default {
   flex-direction: column;
   height: 100%; /* Prend toute la hauteur disponible */
   width: 100%; /* Prend toute la largeur disponible */
-  background-color: #b0e0e6; /* Bleu pastel */
+  background-color: var(--secondary-color-light); /* Bleu pastel */
 }
 
 .ReviewPage.dark {
-  background-color: #001f3f; /* Bleu marine */
-  color: white;
+  background-color: var(--secondary-color-dark); /* Bleu marine */
+  color: var(--text-color-dark);
 }
 
 @media (max-width: 768px) {

@@ -19,6 +19,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons'
+import '../assets/styles/global.css'
 
 library.add(faCircleHalfStroke)
 
@@ -55,12 +56,12 @@ export default {
 
 /* Couleur pour le mode sombre */
 .dark-icon {
-  color: white;
+  color: var(--text-color-dark);
 }
 
 /* Couleur pour le mode clair */
 .light-icon {
-  color: black;
+  color: var(--text-color-light);
 }
 /* Placement du toogle en haut à droite en vue mobile*/
 @media (max-width: 768px) {

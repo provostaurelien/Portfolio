@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import '../assets/styles/global.css'
 export default {
   name: 'ViewError',
   props: {
@@ -78,12 +79,12 @@ export default {
   text-align: center;
   height: 100%;
   width: 100%;
-  background-color: #b0e0e6; /* Bleu pastel */
+  background-color: var(--secondary-color-light);
 }
 
 .Main.dark {
-  background-color: #001f3f; /* Bleu marine */
-  color: white;
+  background-color: var(--secondary-color-dark);
+  color: var(--text-color-dark);
 }
 
 .rabbit-traces {

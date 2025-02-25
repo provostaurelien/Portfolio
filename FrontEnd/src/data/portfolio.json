@@ -15,12 +15,12 @@
     "image": "image2.png",
     "title": "Kasa",
     "Description": "Développement du front-end React d'une application web de location immobillière",
-    "Details": "A partir d'un Back-end déja mis à disposition, Construction de l'intégralité du front-end en react d'une application dynamique avec vue reponsive. Le builder Vite a était choisir pour la mise en palce de react ",
+    "Details": "A partir d'un Back-end déja mis à disposition, Construction de l'intégralité du front-end en react (<a href='https://github.com/provostaurelien/Kasa-FrontEnd.git' target='_blank'>Lien vers le projet GitHub</a>) d'une application dynamique avec vue reponsive. Le builder Vite a était choisir pour la mise en palce de react ",
     "Plus": "Mise en place de tests unitaires front sur un composant avec state et un sans state ",
     "FichierSup1": "../src/assets/pictures/projects/Kasa1.png",
     "FichierSup2": "../src/assets/pictures/projects/Kasa2.png",
     "FichierSup3": "../src/assets/pictures/projects/KasaTest3.png",
-    "link": "https://github.com/provostaurelien/Kasa-FrontEnd.git"
+    "link": "https://kasafrontend.vercel.app/"
   },
   {
     "id": 3,

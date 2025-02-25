@@ -23,6 +23,7 @@
 <script>
 import darkLogo from '@/assets/logo/WhiteLogo.png'
 import lightLogo from '@/assets/logo/BlackLogo.png'
+import '../assets/styles/global.css'
 
 export default {
   name: 'TheHeader',
@@ -57,12 +58,12 @@ export default {
 
 /* Mode sombre et clair */
 .header {
-  background-color: #4da8c6 !important;
-  color: black;
+  background-color: var(--third-color-light) !important;
+  color: var(--text-color-light);
 }
 .dark .header {
-  background-color: #007198 !important;
-  color: white;
+  background-color: var(--third-color-dark) !important;
+  color: var(--text-color-dark);
 }
 
 /* Logo */

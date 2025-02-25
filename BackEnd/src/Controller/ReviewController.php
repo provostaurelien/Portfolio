@@ -34,16 +34,13 @@ public function addReview(Request $request, EntityManagerInterface $em): JsonRes
         return $this->json(['error' => 'Missing fields or reCAPTCHA token'], 400);
     }
 
-    // Étape 1 : Vérifier le token reCAPTCHA avec l'API Google
+    // Récupération du secret depuis les paramètres
+    $recaptchaSecret = $this->getParameter('recaptcha_secret');
+
+    // Appel à l'API Google pour vérifier le token reCAPTCHA
     $recaptchaToken = $data['recaptchaToken'];
-    $recaptchaSecret = '6LeXieEqAAAAAOJcEhLPlEpX9kXwoLexMYx53p4G';
-
-    // Appel à l'API Google
     $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptchaSecret&response=$recaptchaToken");
-$responseKeys = json_decode($response, true);
-
-// Log des données reçues par Google
-file_put_contents('php://stderr', print_r($responseKeys, true));
+    $responseKeys = json_decode($response, true);
 
     if (!$responseKeys['success'] || $responseKeys['score'] < 0.5) {
         return $this->json(['error' => 'Invalid reCAPTCHA token or low score', 'details' => $responseKeys], 403);

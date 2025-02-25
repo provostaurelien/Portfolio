@@ -69,6 +69,7 @@
 import { ref, onMounted } from 'vue'
 import { getReviews, addReview } from '../api/Api.js'
 import { useReCaptcha } from 'vue-recaptcha-v3'
+import '../assets/styles/global.css'
 
 export default {
   props: {
@@ -200,15 +201,15 @@ export default {
 .GetReviews {
   position: relative;
   padding: 1% 2% 6% 2%;
-  color: #000000;
-  background-color: #b0e0e6; /* Bleu pastel */
+  background-color: var(--secondary-color-light); /* Bleu pastel */
+  color: var(--text-color-light);
   transform: skewY(5deg); /* Inclinaison vers le haut */
   transform-origin: top right;
 }
 
 .GetReviews.dark {
-  background-color: #001f3f; /* Bleu marine */
-  color: white;
+  background-color: var(--secondary-color-dark); /* Bleu marine */
+  color: var(--text-color-dark);
 }
 
 /* Correction pour le contenu interne */
@@ -219,15 +220,15 @@ export default {
 .SendReview {
   position: relative;
   padding: 1% 2% 6% 2%;
-  color: #000000;
-  background-color: #ffffff; /* Couleur par défaut */
+  background-color: var(--primary-color-light);
+  color: var(--text-color-light);
   transform: skewY(5deg); /* Inclinaison vers le haut */
   transform-origin: top right;
 }
 
 .SendReview.dark {
-  background-color: #2c2c2c; /* Gris anthracite */
-  color: #ffffff;
+  background-color: var(--primary-color-dark);
+  color: var(--text-color-dark);
 }
 
 .SendReview > * {

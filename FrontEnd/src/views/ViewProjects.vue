@@ -18,7 +18,10 @@
           class="carousel-link"
         >
           <div class="ImageContainer">
-            <img :src="`src/assets/pictures/projects/${project.image}`" :alt="project.title" />
+            <img
+              :src="`src/assets/pictures/projects/${project.image}`"
+              :alt="'Logo de ' + project.title"
+            />
           </div>
           <h2>{{ project.title }}</h2>
           <p>{{ project.Description }}</p>
@@ -29,6 +32,7 @@
 </template>
 
 <script>
+import '../assets/styles/global.css'
 export default {
   name: 'ViewProjects',
   props: {
@@ -67,26 +71,26 @@ export default {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background-color: #b0e0e6; /* Bleu pastel */
+  background-color: var(--secondary-color-light); /* Bleu pastel */
 }
 
 .ProjectsPage.dark {
-  background-color: #001f3f; /* Bleu marine */
-  color: white;
+  background-color: var(--secondary-color-dark); /* Bleu marine */
+  color: var(--text-color-dark);
 }
 
 .ProjectPresentation {
   position: relative;
   padding: 1% 2% 6% 2%;
-  color: #000000;
-  background-color: #ffffff; /* Couleur par défaut */
+  background-color: var(--primary-color-light); /* Couleur par défaut */
+  color: var(--text-color-light);
   transform: skewY(5deg); /* Inclinaison vers le haut */
   transform-origin: top right;
 }
 
 .ProjectPresentation.dark {
-  background-color: #2c2c2c; /* Gris anthracite */
-  color: #ffffff;
+  background-color: var(--primary-color-dark); /* Gris anthracite */
+  color: var(--text-color-dark);
 }
 
 .ProjectPresentation > * {
@@ -102,12 +106,12 @@ export default {
   justify-content: center; /* Centre les éléments si une seule carte sur la dernière ligne */
   height: 100%; /* Prend toute la hauteur disponible */
   width: 100%; /* Prend toute la largeur disponible */
-  background-color: #b0e0e6; /* Bleu pastel */
+  background-color: var(--secondary-color-ligh); /* Bleu pastel */
 }
 
 .ProjectList.dark {
-  background-color: #001f3f; /* Bleu marine */
-  color: white;
+  background-color: var(--secondary-color-dark); /* Bleu marine */
+  color: var(--text-color-dark);
 }
 
 .ProjectCard {
@@ -117,8 +121,8 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center; /* Centre verticalement le contenu */
-  background-color: white;
-  color: #000000;
+  background-color: var(--primary-color-light);
+  color: var(--test-color-light);
   border-radius: 8px;
   padding: 20px;
   box-shadow:
@@ -127,8 +131,8 @@ export default {
 }
 
 .ProjectCard.dark {
-  background-color: #2c2c2c;
-  color: white;
+  background-color: var(--primary-color-dark);
+  color: var(--test-color-dark);
 }
 
 /* Conteneur pour centrer l'image */
@@ -146,13 +150,13 @@ export default {
 .ProjectCard h2,
 .ProjectCard p {
   text-align: center;
-  color: black;
+  color: var(--text-color-light);
 }
 
 .ProjectCard.dark h2,
 .ProjectCard.dark p {
   text-align: center;
-  color: white;
+  color: var(--text-color-dark);
 }
 
 /* Suppression de l'héritage CSS des liens */
