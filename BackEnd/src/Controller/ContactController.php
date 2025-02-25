@@ -35,6 +35,8 @@ class ContactController extends AbstractController
 
         $mailer->send($email);
 
+        
+
         return $this->json(['message' => 'Email envoyé avec succès']);
     }
 }

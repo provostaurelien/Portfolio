@@ -1,11 +1,16 @@
 <template>
   <section :class="['Main', { dark: isDark }]">
     <h1>Vous êtes perdu?</h1>
-    <p>(Suivez le lapin blanc <span>😀</span>)</p>
+    <p>(Suivez le lapin blanc <span>😉</span>)</p>
 
-    <!-- Affichage des traces de lapin -->
+    <!-- Ligne 1 des traces -->
     <div class="rabbit-traces">
-      <span v-for="(trace, index) in traces" :key="index" class="trace">🐾</span>
+      <span v-for="(trace, index) in topTraces" :key="'top-' + index" class="trace">🐾</span>
+    </div>
+
+    <!-- Ligne 2 des traces -->
+    <div class="rabbit-traces">
+      <span v-for="(trace, index) in bottomTraces" :key="'bottom-' + index" class="trace">🐾</span>
     </div>
 
     <!-- Lapin blanc cliquable -->
@@ -31,7 +36,8 @@ export default {
   },
   data() {
     return {
-      traces: [], // Liste des traces de lapin
+      topTraces: [], // Traces de la ligne du haut
+      bottomTraces: [], // Traces de la ligne du bas
       showRabbit: false, // Affichage du lapin
     }
   },
@@ -43,7 +49,11 @@ export default {
       let count = 0
       const interval = setInterval(() => {
         if (count < 8) {
-          this.traces.push('🐾') // Ajoute une trace
+          if (count % 2 === 0) {
+            this.topTraces.push('🐾') // Ajoute une trace à la ligne du haut
+          } else {
+            this.bottomTraces.push('🐾') // Ajoute une trace à la ligne du bas
+          }
           count++
         } else {
           clearInterval(interval) // Arrête l'intervalle après 8 traces

@@ -15,7 +15,7 @@
       </div>
 
       <!-- Footer -->
-      <TheFooter :is-dark="isDarkMode" />
+      <TheFooter :is-dark="isDarkMode" class="footer" />
     </div>
   </div>
 </template>
@@ -24,7 +24,6 @@
 import DarkModeHandler from '@/components/DarkModeHandler.vue'
 import TheHeader from './components/TheHeader.vue'
 import TheFooter from './components/TheFooter.vue'
-
 export default {
   name: 'App',
   components: { DarkModeHandler, TheHeader, TheFooter },
@@ -70,7 +69,7 @@ export default {
   }
   .main-content {
     margin-left: 0%; /* Compense la largeur de la sidebar */
-    height: 86%; /* Laisse le contenu s'étendre naturellement */
+    height: 94%; /* Laisse le contenu s'étendre naturellement */
   }
 }
 </style>

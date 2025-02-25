@@ -53,6 +53,9 @@ nelmio_api_doc:
                     score:
                       type: integer
                       example: 5
+                    recaptchaToken:
+                      type : string
+                      example: "TOKEN_RECAPTCHA_VALIDE"
           responses:
             "201":
               description: "Avis ajouté"
@@ -64,6 +67,82 @@ nelmio_api_doc:
                       message:
                         type: string
                         example: "Avis ajouté"
+            "400":
+              description: "Bad Request - Champs manquants ou score incorrect"
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      error:
+                        type: string
+                        example: "Missing fields"
+            "403":
+              description: "Invalid reCAPTCHA token or low score"
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      error:
+                        type: string
+                        example: "Bad captcha"
+            "422":
+              description: "Unprocessable Entity - score incorrect"
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      error:
+                        type: string
+                        example: "Le score doit être un entier entre 1 et 5"
+            "500":
+              description: "Erreur interne du serveur"
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      error:
+                        type: string
+                        example: "Erreur interne du serveur"
+      /api/reviews/no-recaptcha:
+        post:
+          summary: "Ajoute un nouvel avis sans validation reCAPTCHA (mode développement)"
+          tags:
+            - "Reviews"
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  required:
+                    - author
+                    - content
+                    - score
+                  properties:
+                    author:
+                      type: string
+                      example: "John Doe"
+                    content:
+                      type: string
+                      example: "Super site !"
+                    score:
+                      type: integer
+                      example: 5
+          responses:
+            "201":
+              description: "Avis ajouté avec succès (sans reCAPTCHA)"
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: "Avis ajouté (sans validation reCAPTCHA)"
             "400":
               description: "Bad Request - Champs manquants ou score incorrect"
               content:

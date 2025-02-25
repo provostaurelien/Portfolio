@@ -42,11 +42,10 @@
             <div class="card-body">
               <img
                 :src="'src/assets/pictures/skills/' + skill.image"
-                alt="{{ skill.title }}"
+                :alt="'Image représentant ' + skill.title"
                 class="card-image"
               />
               <h3 class="card-title">{{ skill.title }}</h3>
-              <p class="card-text">{{ skill.text }}</p>
             </div>
           </div>
         </div>
@@ -149,19 +148,13 @@ h1 {
 
 /* Section skills */
 
-/* Styles pour la grille */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Trois colonnes */
-  gap: 1.5rem; /* Espacement entre les cartes */
-}
-
 /* Styles pour les cartes */
 /* Grille des cartes */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Trois colonnes */
   gap: 1.5rem; /* Espacement entre les cartes */
+  padding-top: 30px;
 }
 
 /* Styles pour les cartes */
@@ -281,6 +274,12 @@ h1 {
     display: block; /* Utilisation de Flexbox */
     align-items: center; /* Aligne verticalement au centre */
   }
+  .APropos-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr); /* Trois colonnes */
@@ -292,7 +291,7 @@ h1 {
     object-fit: contain;
   }
   h1 {
-    padding-top: 1rem;
+    padding-top: 2rem;
   }
 }
 </style>

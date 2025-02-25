@@ -1,13 +1,13 @@
 <template>
   <section :class="['ReviewPage', { dark: isDark }]">
-    <Reviews :is-dark="isDark" />
+    <AllReviews :is-dark="isDark" />
   </section>
 </template>
 
 <script>
 // Importation du composant Reviews
 import { ref } from 'vue'
-import Reviews from '@/components/Reviews.vue'
+import AllReviews from '@/components/ReviewsCall.vue'
 
 export default {
   name: 'ViewReviews',
@@ -18,7 +18,7 @@ export default {
     },
   },
   components: {
-    Reviews, // Enregistrement du composant Reviews
+    AllReviews, // Enregistrement du composant Reviews
   },
   setup() {
     const reviewsComponent = ref(null)
@@ -42,5 +42,11 @@ export default {
 .ReviewPage.dark {
   background-color: #001f3f; /* Bleu marine */
   color: white;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    padding-top: 2rem;
+  }
 }
 </style>

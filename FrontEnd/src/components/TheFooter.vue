@@ -1,17 +1,32 @@
 <template>
   <footer :class="{ dark: isDark }" class="footer">
     <span>Designed by me @ 2025</span>
-    <span class="footer-email">contact@monmail.com</span>
+    <div class="footer-links">
+      <a @click="redirectToContact" class="footer-link">
+        <span class="footer-email">Contact</span>
+      </a>
+      <a
+        href="https://www.linkedin.com/in/aurélien-p-a1bb7b178"
+        target="_blank"
+        class="footer-link linkedin-link"
+      >
+        LinkedIn
+      </a>
+    </div>
   </footer>
 </template>
 
 <script>
 export default {
-  name: 'TheFooter',
   props: {
     isDark: {
       type: Boolean,
       required: true,
+    },
+  },
+  methods: {
+    redirectToContact() {
+      this.$router.push({ name: 'Contact' }) // Redirige vers la route nommée "Contact"
     },
   },
 }
@@ -29,23 +44,32 @@ export default {
   /*clip-path: path('M0,300 C150,400 3650,0 500,00 L500,00 L0,0 Z'); /* Forme de vague */
 }
 
-.light {
-  background-color: white !important;
-  color: black;
-}
-.dark .footer {
-  background-color: #2c2c2c !important;
+.footer.dark {
+  background-color: #343a40; /* Couleur sombre */
   color: white;
 }
 
-/* E-mail dans le footer */
-.footer-email {
-  text-align: right;
+.footer-links {
+  display: flex;
+  gap: 15px; /* Espacement entre les liens */
 }
+
+.footer-link {
+  text-decoration: none;
+  color: inherit; /* Hérite de la couleur actuelle */
+  cursor: pointer;
+}
+
+.footer-link:hover {
+  color: inherit; /* Empêche le changement de couleur au survol */
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .footer {
     padding: 10px 20px;
     box-sizing: border-box; /* S'assure que les marges sont incluses dans la largeur/hauteur */
+    font-size: 14px;
   }
 }
 </style>

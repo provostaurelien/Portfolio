@@ -12,7 +12,7 @@
     </div>
     <div :class="['ProjectList', { dark: isDark }]">
       <!-- Boucle sur les projets récupérés -->
-      <div v-for="project in items" :key="project.id" class="ProjectCard">
+      <div v-for="project in items" :key="project.id" :class="['ProjectCard', { dark: isDark }]">
         <router-link
           :to="{ name: 'ProjectDetails', params: { id: project.id } }"
           class="carousel-link"
@@ -118,11 +118,17 @@ export default {
   align-items: center;
   justify-content: center; /* Centre verticalement le contenu */
   background-color: white;
+  color: #000000;
   border-radius: 8px;
   padding: 20px;
   box-shadow:
     rgba(0, 0, 0, 0.1) 0px 4px 6px,
     rgba(0, 0, 0, 0.05) -1px -1px;
+}
+
+.ProjectCard.dark {
+  background-color: #2c2c2c;
+  color: white;
 }
 
 /* Conteneur pour centrer l'image */
@@ -140,6 +146,13 @@ export default {
 .ProjectCard h2,
 .ProjectCard p {
   text-align: center;
+  color: black;
+}
+
+.ProjectCard.dark h2,
+.ProjectCard.dark p {
+  text-align: center;
+  color: white;
 }
 
 /* Suppression de l'héritage CSS des liens */
@@ -158,6 +171,9 @@ export default {
     flex-basis: calc(100% - 0px); /* Une seule carte par ligne sur mobile */
     max-width: calc(100% - 30px);
     margin: auto;
+  }
+  h1 {
+    padding-top: 2rem;
   }
 }
 </style>

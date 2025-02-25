@@ -1,7 +1,7 @@
 <template>
   <div :class="['SendContact', { dark: isDark }]">
     <h1>Contactez-moi</h1>
-    <form @submit.prevent="submitContactForm">
+    <form :class="{ dark: isDark }" @submit.prevent="submitContactForm">
       <div>
         <label for="name">Nom :</label>
         <input id="name" v-model="contactForm.name" type="text" placeholder="Votre nom" />
@@ -29,7 +29,7 @@
 
 <script>
 import { ref } from 'vue'
-import { sendContactMessage } from '@/api/Api.js' // Fonction API pour envoyer le message
+import { sendContactMessage } from '../api/Api.js' // Fonction API pour envoyer le message
 
 export default {
   name: 'ContactForm',
@@ -51,7 +51,7 @@ export default {
 
     // Regex pour valider l'email et le nom
     const emailRegex =
-      /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/
+      /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/
     const nameRegex = /^[a-zA-ZÀ-ÿ _-]+$/
 
     const validateForm = () => {
@@ -143,6 +143,12 @@ h1 {
 @media (max-width: 768px) {
   h1 {
     padding-top: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    padding-top: 2rem;
   }
 }
 </style>

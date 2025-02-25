@@ -29,6 +29,50 @@ public function addReview(Request $request, EntityManagerInterface $em): JsonRes
 {
     $data = json_decode($request->getContent(), true);
 
+    // Vérification des champs obligatoires
+    if (!isset($data['author'], $data['content'], $data['score'], $data['recaptchaToken'])) {
+        return $this->json(['error' => 'Missing fields or reCAPTCHA token'], 400);
+    }
+
+    // Étape 1 : Vérifier le token reCAPTCHA avec l'API Google
+    $recaptchaToken = $data['recaptchaToken'];
+    $recaptchaSecret = '6LeXieEqAAAAAOJcEhLPlEpX9kXwoLexMYx53p4G';
+
+    // Appel à l'API Google
+    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptchaSecret&response=$recaptchaToken");
+$responseKeys = json_decode($response, true);
+
+// Log des données reçues par Google
+file_put_contents('php://stderr', print_r($responseKeys, true));
+
+    if (!$responseKeys['success'] || $responseKeys['score'] < 0.5) {
+        return $this->json(['error' => 'Invalid reCAPTCHA token or low score', 'details' => $responseKeys], 403);
+    }
+
+    // Étape 2 : Vérification que le score est un entier entre 1 et 5
+    $score = filter_var($data['score'], FILTER_VALIDATE_INT, [
+        'options' => ['min_range' => 1, 'max_range' => 5]
+    ]);
+
+    if ($score === false) {
+        return $this->json(['error' => 'Le score doit être un entier entre 1 et 5'], 422);
+    }
+
+    // Étape 3 : Création et sauvegarde de l'avis
+    $review = new Review();
+    $review->setAuthor($data['author']);
+    $review->setContent($data['content']);
+    $review->setScore($score);
+
+    $em->persist($review);
+    $em->flush();
+
+    return $this->json(['message' => 'Avis ajouté'], 201);
+}
+public function addReviewWithoutRecaptcha(Request $request, EntityManagerInterface $em): JsonResponse
+{
+    $data = json_decode($request->getContent(), true);
+
     if (!isset($data['author'], $data['content'], $data['score'])) {
         return $this->json(['error' => 'Missing fields'], 400);
     }
@@ -42,6 +86,7 @@ public function addReview(Request $request, EntityManagerInterface $em): JsonRes
         return $this->json(['error' => 'Le score doit être un entier entre 1 et 5'], 422);
     }
 
+    // Création et sauvegarde de l'avis
     $review = new Review();
     $review->setAuthor($data['author']);
     $review->setContent($data['content']);
@@ -50,6 +95,6 @@ public function addReview(Request $request, EntityManagerInterface $em): JsonRes
     $em->persist($review);
     $em->flush();
 
-    return $this->json(['message' => 'Avis ajouté'], 201);
+    return $this->json(['message' => 'Avis ajouté (sans validation reCAPTCHA)'], 201);
 }
 }

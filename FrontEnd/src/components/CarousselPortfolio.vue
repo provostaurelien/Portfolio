@@ -1,6 +1,6 @@
 <template>
   <div class="gallery">
-    <div class="carousel-container">
+    <div class="carousel-container" @mouseover="stopCarousel" @mouseleave="startCarousel">
       <transition name="slide-fade" mode="out-in">
         <div v-if="visibleItems.length > 0" :key="visibleItems[0].id" class="gallery-item">
           <router-link
@@ -17,6 +17,8 @@
         </div>
       </transition>
     </div>
+    <!-- Compteur -->
+    <div class="carousel-counter">{{ currentIndex + 1 }}/{{ items.length }}</div>
   </div>
 </template>
 
@@ -26,6 +28,7 @@ export default {
     return {
       items: [], // Stocke les données du JSON
       currentIndex: 0, // Index de l'image actuelle
+      carouselInterval: null, // Référence au timer du carrousel
     }
   },
   computed: {
@@ -41,9 +44,10 @@ export default {
     this.startCarousel()
   },
   beforeUnmount() {
-    clearInterval(this.carouselInterval)
+    this.stopCarousel()
   },
   methods: {
+    //Gestion des erreurs
     async fetchPortfolioData() {
       try {
         const response = await fetch('src/data/portfolio.json')
@@ -56,11 +60,16 @@ export default {
       }
     },
     startCarousel() {
+      this.stopCarousel() // Arrête tout timer existant avant d'en démarrer un nouveau
+      // Gestion du défilement automatique
       this.carouselInterval = setInterval(() => {
         if (this.items.length > 0) {
           this.currentIndex = (this.currentIndex + 1) % this.items.length
         }
       }, 3000)
+    },
+    stopCarousel() {
+      clearInterval(this.carouselInterval)
     },
   },
 }
@@ -85,7 +94,9 @@ export default {
 
 h3 {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 36px;
+  font-family: 'Caveat', sans-serif !important;
+  color: black;
 }
 
 /* Transition pour le fondu et le glissement */
@@ -113,5 +124,15 @@ h3 {
 .slide-fade-leave-to {
   opacity: 0;
   transform: translateX(100%); /* L'image sort vers la gauche */
+}
+.carousel-counter {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.carousel-container:hover .carousel-image {
+  cursor: pointer;
 }
 </style>

@@ -9,7 +9,16 @@
       />
       <div class="Title-section">
         <h2>{{ project.title }}</h2>
-        <a v-if="project.link" :href="project.link" target="_blank">Voir le projet</a>
+        <br />
+        <a
+          v-if="project.link"
+          :href="project.link"
+          target="_blank"
+          :class="['project-button', { dark: isDark }]"
+        >
+          Découvrir le projet
+          <span class="arrow">→</span>
+        </a>
       </div>
     </section>
 
@@ -20,22 +29,52 @@
       <p v-if="project.Plus"><strong>Le petit plus :</strong> {{ project.Plus }}</p>
 
       <!-- Fichiers supplémentaires -->
-      <div v-if="project.FichierSup1 || project.FichierSup2" class="files">
+      <div
+        v-if="project.FichierSup1 || project.FichierSup2 || project.FichierSup3"
+        :class="['files', { dark: isDark }]"
+      >
+        <!-- Fichier 1 -->
         <div v-if="project.FichierSup1">
           <template v-if="isVideo(project.FichierSup1)">
             <video controls :src="project.FichierSup1"></video>
           </template>
+          <template v-else-if="isImage(project.FichierSup1)">
+            <img :src="project.FichierSup1" alt="Image supplémentaire" />
+          </template>
           <template v-else>
-            <a :href="project.FichierSup1" download>Télécharger Fichier 1</a>
+            <a :href="project.FichierSup1" download
+              >Télécharger la ressource : {{ getFileName(project.FichierSup1) }}</a
+            >
           </template>
         </div>
 
+        <!-- Fichier 2 -->
         <div v-if="project.FichierSup2">
           <template v-if="isVideo(project.FichierSup2)">
             <video controls :src="project.FichierSup2"></video>
           </template>
+          <template v-else-if="isImage(project.FichierSup2)">
+            <img :src="project.FichierSup2" alt="Image du site 1" />
+          </template>
           <template v-else>
-            <a :href="project.FichierSup2" download>Télécharger Fichier 2</a>
+            <a :href="project.FichierSup2" download
+              >Télécharger la ressource : {{ getFileName(project.FichierSup2) }}</a
+            >
+          </template>
+        </div>
+
+        <!-- Fichier 3 -->
+        <div v-if="project.FichierSup3">
+          <template v-if="isVideo(project.FichierSup3)">
+            <video controls :src="project.FichierSup3"></video>
+          </template>
+          <template v-else-if="isImage(project.FichierSup3)">
+            <img :src="project.FichierSup3" alt="Image du site 2" />
+          </template>
+          <template v-else>
+            <a :href="project.FichierSup3" download
+              >Télécharger la ressource : {{ getFileName(project.FichierSup3) }}</a
+            >
           </template>
         </div>
       </div>
@@ -62,6 +101,13 @@ export default {
   methods: {
     isVideo(file) {
       return file.endsWith('.mp4')
+    },
+    isImage(file) {
+      const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif']
+      return imageExtensions.some((ext) => file.endsWith(ext))
+    },
+    getFileName(filePath) {
+      return filePath.split('/').pop() // Récupère tout après le dernier '/'
     },
   },
   mounted() {
@@ -112,7 +158,66 @@ h1 {
   flex-direction: column; /* Aligne les enfants verticalement */
   align-items: center; /* Centre horizontalement */
   text-align: center; /* Centre le texte */
+  padding-top: 20px;
   margin-left: 16px;
+}
+
+.project-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+  background-color: #b0e0e6;
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-button.dark {
+  color: white;
+  background-color: #001f3f;
+}
+
+.project-button:hover {
+  background-color: #4da8c6;
+  transform: scale(1.05); /* Légère mise en avant */
+}
+
+.project-button.dark:hover {
+  background-color: #007198;
+}
+
+.project-button .arrow {
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.project-button:hover .arrow {
+  transform: translateX(5px); /* Déplacement de la flèche vers la droite */
+}
+
+/* Effet d'ondulation lors du clic */
+.project-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease-out;
+}
+
+.project-button:active::after {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .Title.dark {
@@ -149,23 +254,46 @@ h1 {
 .Title-section {
   margin-left: 16px;
 }
-.body p {
-  margin: 8px 0;
+.Description p {
+  margin: 30px;
 }
-.files video {
-  width: 100%;
+
+.files {
+  display: flex; /* Active Flexbox */
+  flex-direction: column; /* Empile les éléments verticalement */
+  align-items: center; /* Centre horizontalement les vidéos */
+  justify-content: center; /* Centre verticalement si le conteneur a une hauteur définie */
+  width: 100%; /* S'assure que le conteneur prend toute la largeur */
+  padding: 20px 0; /* Ajoute de l'espace autour des vidéos */
 }
+.files video,
+.files img {
+  display: block; /* Nécessaire pour utiliser margin:auto */
+  width: 70%; /* Ajustez la largeur selon vos besoins */
+  margin: 20px auto; /* Centre horizontalement chaque vidéo */
+}
+
 .files a {
   display: block;
+  text-decoration: none; /* Supprime le soulignement */
+  color: #000000;
+  padding: 20px 0px;
+}
+
+.files.dark a {
+  color: white;
+}
+
+.files a:hover {
+  color: #ff6600; /* Couleur au survol */
 }
 
 @media (max-width: 768px) {
-  .Logo,
-  h1 {
-    padding-top: 1rem;
-  }
   .Title {
     flex-direction: column;
+  }
+  h1 {
+    padding-top: 2rem;
   }
 }
 </style>

@@ -33,3 +33,8 @@ visitor_increment:
     path: /api/visitor/increment
     controller: App\Controller\VisitorController::incrementVisitorCount
     methods: [POST]
+
+add_review_without_recaptcha:
+  path: /api/reviews/no-recaptcha
+  controller: App\Controller\ReviewController::addReviewWithoutRecaptcha
+  methods: [POST]

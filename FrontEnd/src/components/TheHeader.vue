@@ -52,15 +52,16 @@ export default {
 .header {
   display: flex; /* Flexbox pour aligner les éléments */
   height: 100vh; /* Hauteur forcée pour desktop */
+  z-index: 150;
 }
 
 /* Mode sombre et clair */
-.light {
-  background-color: white;
+.header {
+  background-color: #4da8c6 !important;
   color: black;
 }
 .dark .header {
-  background-color: #2c2c2c !important;
+  background-color: #007198 !important;
   color: white;
 }
 
@@ -78,7 +79,7 @@ export default {
 
 /* Style des liens */
 .nav-link {
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   text-decoration: none; /* Supprime le style par défaut des liens HTML */
   color: inherit; /* Adapte la couleur au mode clair/sombre */
 }
@@ -86,7 +87,7 @@ export default {
   text-decoration: underline; /* Soulignement au survol */
 }
 .nav-link.active {
-  font-weight: bold; /* Lien actif en gras */
+  font-weight: 800; /* Lien actif en gras */
 }
 
 /* Sidebar Desktop */
@@ -121,7 +122,6 @@ export default {
     height: 60px;
     display: flex;
     align-items: center;
-    padding: 0 15px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   }
 
@@ -132,7 +132,7 @@ export default {
   .nav-links {
     flex-direction: row; /* Aligne les liens horizontalement en mobile */
     gap: 15px; /* Ajoute un espacement uniforme entre les liens */
-    margin-top: 0; /* Supprime l'espacement vertical par défaut en mobile */
+    margin-top: 20; /* Supprime l'espacement vertical par défaut en mobile */
   }
 }
 </style>

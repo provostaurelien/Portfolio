@@ -2,11 +2,8 @@
   <section :class="['ContactPage', { dark: isDark }]">
     <Contact :is-dark="isDark" />
     <div :class="['MoreContact', { dark: isDark }]">
-      <h2>Moyens de contact supplémentaires</h2>
+      <h2>Moyen de contact supplémentaire</h2>
       <div class="LogoContact">
-        <a :href="'mailto:aurelien.provost@gmail.com'">
-          <img :src="isDark ? lightMail : darkMail" alt="Email" />
-        </a>
         <a
           :href="'https://www.linkedin.com/in/aurélien-p-a1bb7b178'"
           target="_blank"

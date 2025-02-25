@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Comfortaa', sans-serif;
 }
 
 /* Transition entre les modes */
@@ -14,4 +15,90 @@ body {
 /* Suppression des marges par défaut du body */
 body {
   margin: 0 !important;
+}
+
+form {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background-color: #eaeaea;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+form input,
+form textarea,
+form button {
+  display: block;
+  width: calc(100% - 20px);
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: medium;
+}
+
+form button {
+  background-color: #4da8c6;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+}
+
+form button:hover {
+  background-color: #005f7a;
+}
+
+form.dark {
+  background-color: #2c2c2c; /* Couleur de fond sombre */
+  color: #ffffff; /* Texte blanc */
+  border: 1px solid #444; /* Bordure plus visible */
+}
+
+form.dark input,
+form.dark textarea {
+  background-color: #444; /* Fond des champs en mode sombre */
+  color: #fff; /* Texte blanc */
+  border: 1px solid #666; /* Bordure plus claire */
+}
+
+form.dark input::placeholder,
+form.dark textarea::placeholder {
+  color: #fff; /* Couleur blanche pour le placeholder */
+  opacity: 0.8; /* Assurez-vous que l'opacité est définie pour Firefox */
+}
+
+form.dark button {
+  background-color: #007198; /* Couleur du bouton en mode sombre */
+  color: white;
+}
+
+form.dark button:hover {
+  background-color: #005f7a; /* Couleur du bouton au survol */
+}
+
+h1 {
+  font-size: 36px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+h2 {
+  font-size: 26px;
+  padding: 20px 0px;
+}
+/*Rendre le badge captcha visible*/
+.grecaptcha-badge {
+  z-index: 1000;
+}
+@media (max-width: 768px) {
+  h2 {
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
 }
