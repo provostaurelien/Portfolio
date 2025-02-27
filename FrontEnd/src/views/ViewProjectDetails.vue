@@ -124,6 +124,10 @@ export default {
   transform-origin: top right;
 }
 
+.Title.dark {
+  color: var(--text-color-dark);
+}
+
 .Logo {
   padding-top: 6rem;
 }
