@@ -7,10 +7,14 @@
             :to="{ name: 'ProjectDetails', params: { id: visibleItems[0].id } }"
             class="carousel-link"
           >
+            <!-- Placeholder avec gestion de l'état de chargement -->
             <img
               :src="`src/assets/pictures/projects/${visibleItems[0].image}`"
               :alt="visibleItems[0].title"
               class="carousel-image"
+              :class="{ loaded: isImageLoaded }"
+              @load="handleImageLoad"
+              loading="lazy"
             />
           </router-link>
           <h3>{{ visibleItems[0].title }}</h3>
@@ -38,6 +42,7 @@ export default {
       items: [], // Stocke les données du JSON
       currentIndex: 0, // Index de l'image actuelle
       carouselInterval: null, // Référence au timer du carrousel
+      isImageLoaded: false, // État de chargement de l'image
     }
   },
   computed: {
@@ -56,7 +61,7 @@ export default {
     this.stopCarousel()
   },
   methods: {
-    //Gestion des erreurs
+    // Gestion des erreurs
     async fetchPortfolioData() {
       try {
         const response = await fetch('src/data/portfolio.json')
@@ -73,12 +78,16 @@ export default {
       // Gestion du défilement automatique
       this.carouselInterval = setInterval(() => {
         if (this.items.length > 0) {
+          this.isImageLoaded = false // Réinitialise le statut de chargement pour la nouvelle image
           this.currentIndex = (this.currentIndex + 1) % this.items.length
         }
       }, 3000)
     },
     stopCarousel() {
       clearInterval(this.carouselInterval)
+    },
+    handleImageLoad() {
+      this.isImageLoaded = true // Met à jour l'état lorsque l'image est chargée
     },
   },
 }
@@ -97,8 +106,19 @@ export default {
 
 .carousel-image {
   width: 300px;
-  height: auto;
+  height: 300px;
   object-fit: cover;
+
+  /* Placeholder par défaut */
+  background-color: white; /* Couleur grise claire */
+
+  /* Transition visuelle */
+  opacity: 0; /* Caché tant que l'image n'est pas chargée */
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-image.loaded {
+  opacity: 1; /* L'image devient visible une fois chargée */
 }
 
 h3 {
